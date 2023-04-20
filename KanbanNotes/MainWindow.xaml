@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KanbanNotes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="KanbanNotes" Height="450" Width="800">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Margin="8" Background="#AAA" Width="256" AllowDrop="True" Drop="TaskStack_Drop">
+            <Border Background="Cyan" MinHeight="64" Margin="16" PreviewMouseLeftButtonDown="TaskBorder_PreviewMouseLeftButtonDown"/>
+        </StackPanel>
+        <StackPanel Margin="8" Background="#AAA" Width="256" AllowDrop="True" Drop="TaskStack_Drop">
+            <Border Background="Cyan" MinHeight="64" Margin="16" PreviewMouseLeftButtonDown="TaskBorder_PreviewMouseLeftButtonDown"/>
+        </StackPanel>
+    </StackPanel>
 </Window>
