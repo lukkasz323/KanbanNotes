@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanNotes", "KanbanNotes\KanbanNotes.csproj", "{5F7039F6-74A5-4D5F-8EBC-2FB1E00B3646}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanbanNotes", "KanbanNotes\KanbanNotes.csproj", "{5F7039F6-74A5-4D5F-8EBC-2FB1E00B3646}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{16BDC66C-EFB2-4F61-A257-B53B8FE9CAFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5F7039F6-74A5-4D5F-8EBC-2FB1E00B3646}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F7039F6-74A5-4D5F-8EBC-2FB1E00B3646}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F7039F6-74A5-4D5F-8EBC-2FB1E00B3646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16BDC66C-EFB2-4F61-A257-B53B8FE9CAFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16BDC66C-EFB2-4F61-A257-B53B8FE9CAFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16BDC66C-EFB2-4F61-A257-B53B8FE9CAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16BDC66C-EFB2-4F61-A257-B53B8FE9CAFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
