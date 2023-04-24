@@ -4,6 +4,23 @@
              xmlns:local="clr-namespace:KanbanNotes"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="column" TargetType="StackPanel">
+            <Style.Setters>
+                <Setter Property="Background" Value="#AAA"/>
+                <Setter Property="Margin" Value="8"/>
+                <Setter Property="Width" Value="256"/>
+                <Setter Property="AllowDrop" Value="True"/>
+                <EventSetter Event="Drop" Handler="TaskColumn_Drop"/>
+            </Style.Setters>
+            
+        </Style>
+        <Style x:Key="task" TargetType="Border">
+            <Style.Setters>
+                <Setter Property="Background" Value="Cyan"/>
+                <Setter Property="Margin" Value="16"/>
+                <Setter Property="MinHeight" Value="64"/>
+                <EventSetter Event="MouseLeftButtonDown" Handler="TaskColumn_MouseLeftButtonDown"/>
+            </Style.Setters>
+        </Style>
     </Application.Resources>
 </Application>
