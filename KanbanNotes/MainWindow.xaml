@@ -9,15 +9,10 @@
         Title="KanbanNotes" Height="450" Width="800">
 
     <Window.DataContext>
-        <ViewModels:KanbanBoardViewModel/>
+        <ViewModels:MainViewModel/>
     </Window.DataContext>
 
     <Window.Resources>
-        
-        <Style x:Key="board" TargetType="StackPanel">
-            <Setter Property="Orientation" Value="Horizontal"/>
-        </Style>
-        
         <Style x:Key="taskColumn" TargetType="StackPanel">
             <Setter Property="Background" Value="#AAA"/>
             <Setter Property="Margin" Value="8"/>
@@ -37,39 +32,43 @@
     </Window.Resources>
 
     <Window.Content>
+
         <ScrollViewer HorizontalScrollBarVisibility="Visible">
+            
             <ItemsControl ItemsSource="{Binding TaskColumns}">
 
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Style="{StaticResource board}"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
 
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
 
-                    <ItemsControl ItemsSource="{Binding}">
+                        <ItemsControl ItemsSource="{Binding}">
 
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Style="{StaticResource taskColumn}"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Style="{StaticResource taskColumn}"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
 
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border Style="{StaticResource task}"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource task}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
 
-                    </ItemsControl>
+                        </ItemsControl>
 
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
 
-        </ItemsControl>
+            </ItemsControl>
+            
         </ScrollViewer>
+        
     </Window.Content>
 
 </Window>

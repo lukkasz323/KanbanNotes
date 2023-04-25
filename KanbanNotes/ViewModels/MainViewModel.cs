@@ -2,13 +2,13 @@
 
 namespace KanbanNotes.ViewModels;
 
-public class KanbanBoardViewModel
+public class MainViewModel
 {
     private readonly KanbanBoardModel _model = new();
 
     public List<List<Task>> TaskColumns { get; }
 
-    public KanbanBoardViewModel()
+    public MainViewModel()
     {
         TaskColumns = _model.GetColumns();
         TaskColumns.Add(new());
