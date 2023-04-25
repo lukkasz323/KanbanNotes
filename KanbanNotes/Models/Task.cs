@@ -1,5 +1,6 @@
 ﻿namespace KanbanNotes.Models;
 
-internal class Task
+public class Task
 {
+    public string Text { get; set; } = "Text";
 }

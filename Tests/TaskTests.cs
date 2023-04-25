@@ -7,8 +7,5 @@ public class TaskTests
     }
 
     [Fact]
-    public void TestClass()
-    {
-        throw new NotImplementedException();
-    }
+    public void TestClass() => throw new NotImplementedException();
 }
