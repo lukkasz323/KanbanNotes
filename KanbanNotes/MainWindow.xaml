@@ -18,16 +18,16 @@
             <Setter Property="Background" Value="#AAA"/>
             <Setter Property="Margin" Value="8"/>
             <Setter Property="MinWidth" Value="256"/>
+            <Setter Property="MaxWidth" Value="256"/>
             <Setter Property="MinHeight" Value="32"/>
             <Setter Property="AllowDrop" Value="True"/>
-            <EventSetter Event="UIElement.Drop" Handler="TaskColumn_Drop"/>
+            <EventSetter Event="Drop" Handler="TaskColumn_Drop"/>
         </Style>
 
         <Style x:Key="task" TargetType="Border">
-            <Setter Property="Background" Value="Cyan"/>
             <Setter Property="Margin" Value="16"/>
             <Setter Property="MinHeight" Value="64"/>
-            <EventSetter Event="UIElement.MouseLeftButtonDown" Handler="TaskColumn_MouseLeftButtonDown"/>
+            <EventSetter Event="PreviewMouseRightButtonDown" Handler="Task_Drag"/>
         </Style>
         
     </Window.Resources>
@@ -40,7 +40,7 @@
 
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
+                        <StackPanel Orientation="Horizontal" Tag="{Binding}"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
@@ -51,13 +51,15 @@
 
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Style="{StaticResource taskColumn}"/>
+                                    <StackPanel Style="{StaticResource taskColumn}" Tag="{Binding}"/>
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
 
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Style="{StaticResource task}"/>
+                                    <Border Style="{StaticResource task}" Tag="{Binding}">
+                                        <TextBox Text="{Binding Text}" TextWrapping="Wrap"/>
+                                    </Border>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
 
