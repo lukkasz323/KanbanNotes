@@ -10,6 +10,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        _viewModel.SaveData();
 
         DataContext = _viewModel;
     }
@@ -24,7 +25,6 @@ public partial class MainWindow : Window
     private void TaskColumn_Drop(object sender, DragEventArgs e)
     {
         var dropedElement = (Border)e.Data.GetData(typeof(Border));
-
         var task = (Task)dropedElement.Tag;
         var sourceColumn = (ObservableCollection<Task>)FindTaggedParent(dropedElement).Tag;
         var targetColumn = (ObservableCollection<Task>)((StackPanel)sender).Tag;

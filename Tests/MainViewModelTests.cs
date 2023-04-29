@@ -21,14 +21,22 @@ public class MainViewModelTests
             sourceColumn: _mainViewModel.TaskColumns[1], 
             targetColumn: _mainViewModel.TaskColumns[0]); // [a2] [b13] [c]
         _mainViewModel.RemoveColumn(0); // [b13] [c]
+
+        _mainViewModel.SaveData();
+        _mainViewModel.LoadData();
     }
 
     [Fact]
-    public void TestClass() => Assert.Collection(_mainViewModel.TaskColumns,
+    public void TestClass()
+    {
+        Assert.True(File.Exists(_mainViewModel.SaveDataPath));
+
+        Assert.Collection(_mainViewModel.TaskColumns,
             c => Assert.Collection(c,
                 task => Assert.NotNull(task),
                 task => Assert.NotNull(task)
             ),
             Assert.Empty
         );
+    }
 }

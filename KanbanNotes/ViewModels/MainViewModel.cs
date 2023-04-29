@@ -1,18 +1,38 @@
-﻿namespace KanbanNotes.ViewModels;
+﻿using Microsoft.Win32;
+using System.IO;
+using System.Text.Json;
+
+namespace KanbanNotes.ViewModels;
 
 public class MainViewModel
 {
     public ObservableCollection<ObservableCollection<Task>> TaskColumns { get; set; } = new();
 
-    public void CreateColumn() => TaskColumns.Add(new());
+    internal string SaveDataPath { get; } = "saveData.json";
 
-    public void RemoveColumn(int index) => TaskColumns.RemoveAt(index);
+    internal void CreateColumn() => TaskColumns.Add(new());
 
-    public void CreateTask(int columnIndex) => TaskColumns[columnIndex].Add(new());
+    internal void RemoveColumn(int index) => TaskColumns.RemoveAt(index);
 
-    public void TransferTask(Task task, ObservableCollection<Task> sourceColumn, ObservableCollection<Task> targetColumn)
+    internal void CreateTask(int columnIndex) => TaskColumns[columnIndex].Add(new());
+
+    internal void TransferTask(Task task, ObservableCollection<Task> sourceColumn, ObservableCollection<Task> targetColumn)
     {
         sourceColumn.Remove(task);
         targetColumn.Add(task);
+    }
+
+    internal void SaveData() => 
+        File.WriteAllText(SaveDataPath, JsonSerializer.Serialize(TaskColumns));
+
+    internal void LoadData()
+    {
+        string jsonSaveData = File.ReadAllText(SaveDataPath);
+        ObservableCollection<ObservableCollection<Task>>? saveData = 
+            JsonSerializer.Deserialize<ObservableCollection<ObservableCollection<Task>>>(jsonSaveData);
+        if (saveData != null)
+        {
+            TaskColumns = saveData;
+        }
     }
 }
