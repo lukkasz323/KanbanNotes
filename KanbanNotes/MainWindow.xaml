@@ -71,8 +71,8 @@
                 </ItemsControl>
 
             </ScrollViewer>
-            <Button Click="CreateColumn" Width="32" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left">C</Button>
-            <Button Click="CreateTask" Width="32" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="32">T</Button>
+            <Button Click="CreateColumn" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left">C</Button>
+            <Button Click="CreateTask" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20, 0">T</Button>
         </Grid>
     </Window.Content>
 
