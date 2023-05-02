@@ -10,10 +10,18 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        _viewModel.SaveData();
+
+        _viewModel.LoadData();
+        this.Closing += MainWindow_Closing;
 
         DataContext = _viewModel;
     }
+
+    private void MainWindow_Closing(object? sender, CancelEventArgs e) => _viewModel.SaveData();
+
+    private void CreateColumn(object sender, RoutedEventArgs e) => _viewModel.CreateColumn();
+
+    private void CreateTask(object sender, RoutedEventArgs e) => _viewModel.CreateTask(0);
 
     private void Task_Drag(object sender, MouseButtonEventArgs e)
     {

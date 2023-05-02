@@ -25,14 +25,23 @@ public class MainViewModel
     internal void SaveData() => 
         File.WriteAllText(SaveDataPath, JsonSerializer.Serialize(TaskColumns));
 
-    internal void LoadData()
+    internal bool LoadData()
     {
-        string jsonSaveData = File.ReadAllText(SaveDataPath);
+        string jsonSaveData;
+        try
+        {
+           jsonSaveData = File.ReadAllText(SaveDataPath);
+        }
+        catch (FileNotFoundException)
+        {
+            return false;
+        }
         ObservableCollection<ObservableCollection<Task>>? saveData = 
             JsonSerializer.Deserialize<ObservableCollection<ObservableCollection<Task>>>(jsonSaveData);
         if (saveData != null)
         {
             TaskColumns = saveData;
         }
+        return true;
     }
 }

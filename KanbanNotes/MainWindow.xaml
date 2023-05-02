@@ -33,45 +33,47 @@
     </Window.Resources>
 
     <Window.Content>
+        <Grid>
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
 
-        <ScrollViewer HorizontalScrollBarVisibility="Visible">
-            
-            <ItemsControl ItemsSource="{Binding TaskColumns}">
+                <ItemsControl ItemsSource="{Binding TaskColumns}">
 
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal" Tag="{Binding}"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" Tag="{Binding}"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
 
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
 
-                        <ItemsControl ItemsSource="{Binding}">
+                            <ItemsControl ItemsSource="{Binding}">
 
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Style="{StaticResource taskColumn}" Tag="{Binding}"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Style="{StaticResource taskColumn}" Tag="{Binding}"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
 
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Border Style="{StaticResource task}" Tag="{Binding}">
-                                        <TextBox Text="{Binding Text}" TextWrapping="Wrap"/>
-                                    </Border>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Style="{StaticResource task}" Tag="{Binding}">
+                                            <TextBox Text="{Binding Text}" TextWrapping="Wrap"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
 
-                        </ItemsControl>
+                            </ItemsControl>
 
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
 
-            </ItemsControl>
-            
-        </ScrollViewer>
-        
+                </ItemsControl>
+
+            </ScrollViewer>
+            <Button Click="CreateColumn" Width="32" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left">C</Button>
+            <Button Click="CreateTask" Width="32" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="32">T</Button>
+        </Grid>
     </Window.Content>
 
 </Window>
