@@ -58,7 +58,7 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Border Style="{StaticResource task}" Tag="{Binding}">
-                                            <TextBox Text="{Binding Text}" TextWrapping="Wrap"/>
+                                            <TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
                                         </Border>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
