@@ -6,8 +6,10 @@ Left-click - Edit text
 
 Right-click - Drag and Drop tasks
 
-C button - Create Column
+Middle-click - Create task at selected column
 
-T button - Create Task
+C button - Create column
+
+T button - Create task at column 0
 
 Deleting not supported yet, edit `saveData.json` manually to do that.
