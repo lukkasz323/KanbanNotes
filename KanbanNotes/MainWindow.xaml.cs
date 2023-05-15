@@ -28,7 +28,9 @@ public partial class MainWindow : Window
         if (e.ChangedButton == MouseButton.Middle)
         {
             var taskColumn = (StackPanel)sender;
-            int columnIndex = _viewModel.TaskColumns.IndexOf((ObservableCollection<Task>)taskColumn.Tag);
+            var taskColumnContext = (ObservableCollection<Task>)taskColumn.Tag;
+            int columnIndex = _viewModel.TaskColumns.IndexOf(taskColumnContext);
+
             _viewModel.CreateTask(columnIndex);
         }
     }
@@ -37,10 +39,10 @@ public partial class MainWindow : Window
     {
         var dropedElement = (Border)e.Data.GetData(typeof(Border));
         var task = (Task)dropedElement.Tag;
-        var sourceColumn = (ObservableCollection<Task>)FindTaggedParent(dropedElement).Tag;
-        var targetColumn = (ObservableCollection<Task>)((StackPanel)sender).Tag;
+        var sourceColumnContext = (ObservableCollection<Task>)FindTaggedParent(dropedElement).Tag;
+        var targetColumnContext = (ObservableCollection<Task>)((StackPanel)sender).Tag;
 
-        _viewModel.TransferTask(task, sourceColumn, targetColumn);
+        _viewModel.TransferTask(task, sourceColumnContext, targetColumnContext);
     }
 
     private void Task_Drag(object sender, MouseButtonEventArgs e)
