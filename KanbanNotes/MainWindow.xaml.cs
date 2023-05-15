@@ -23,11 +23,14 @@ public partial class MainWindow : Window
 
     private void CreateTask(object sender, RoutedEventArgs e) => _viewModel.CreateTask(0);
 
-    private void Task_Drag(object sender, MouseButtonEventArgs e)
+    private void TaskColumn_MouseDown(object sender, MouseButtonEventArgs e)
     {
-        var draggedTask = (FrameworkElement)sender;
-
-        DragDrop.DoDragDrop(draggedTask, draggedTask, DragDropEffects.All);
+        if (e.ChangedButton == MouseButton.Middle)
+        {
+            var taskColumn = (StackPanel)sender;
+            int columnIndex = _viewModel.TaskColumns.IndexOf((ObservableCollection<Task>)taskColumn.Tag);
+            _viewModel.CreateTask(columnIndex);
+        }
     }
 
     private void TaskColumn_Drop(object sender, DragEventArgs e)
@@ -38,6 +41,13 @@ public partial class MainWindow : Window
         var targetColumn = (ObservableCollection<Task>)((StackPanel)sender).Tag;
 
         _viewModel.TransferTask(task, sourceColumn, targetColumn);
+    }
+
+    private void Task_Drag(object sender, MouseButtonEventArgs e)
+    {
+        var draggedTask = (FrameworkElement)sender;
+
+        DragDrop.DoDragDrop(draggedTask, draggedTask, DragDropEffects.All);
     }
 
     /// <summary> Throws <see cref="NullReferenceException"/> on failure. </summary>

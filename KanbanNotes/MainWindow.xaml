@@ -22,6 +22,7 @@
             <Setter Property="MinHeight" Value="32"/>
             <Setter Property="AllowDrop" Value="True"/>
             <EventSetter Event="Drop" Handler="TaskColumn_Drop"/>
+            <EventSetter Event="MouseDown" Handler="TaskColumn_MouseDown"/>
         </Style>
 
         <Style x:Key="task" TargetType="Border">
